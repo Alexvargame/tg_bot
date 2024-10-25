@@ -1,6 +1,8 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, KeyboardButtonPollType
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
+from typing import Iterable
+
 class ButtonText:
     HELLO = "Hello"
     WHATS_NEXT = "What's next?"
@@ -58,3 +60,10 @@ def build_yes_or_no_kb():
     #builder.adjust(1)
 
     return builder.as_markup()
+
+def build_select_kb(optins: Iterable[str]):
+    builder = ReplyKeyboardBuilder()
+    for option in optins:
+        builder.button(text=option)
+    builder.adjust(1)
+    return builder.as_markup(resize_keyboard=True)

@@ -10,3 +10,13 @@ def vaild_email_filter(message: types.Message):
         return None
 
     return {'email': email.normalized}
+
+def vaild_email(text: str):
+    try:
+        email = validate_email(text)
+    except EmailNotValidError:
+        return None
+    return email.normalized
+
+# def valid_email_message_text(message:types.Message):
+#     return vaild_email(message.text)
